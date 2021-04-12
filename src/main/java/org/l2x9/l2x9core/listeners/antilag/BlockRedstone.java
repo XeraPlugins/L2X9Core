@@ -41,7 +41,7 @@ public class BlockRedstone implements Listener {
                         + block.getLocation().getWorld().getName() + "";
                 event.setNewCurrent(0);
                 event.getBlock().setType(Material.AIR);
-                sendOpMessage("[&b&lL2X9&r&3&lCore&r] &6Removed a lag machine at &r&1" + block.getLocation().getBlockX() + " " + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + "&r&6 owned by &r&1 " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), "&aClick to telepot to the player", "/tp " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), ClickEvent.Action.RUN_COMMAND);
+                sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed a lag machine at &r&1" + block.getLocation().getBlockX() + " " + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + "&r&6 owned by &r&1 " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), "&aClick to telepot to the player", "/tp " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), ClickEvent.Action.RUN_COMMAND);
                 if (plugin.discordWebhook.alertsEnabled()) {
                     if (!(alertAmount > 10)) {
                         if (plugin.getConfigBoolean("AlertSystem.LagMachineRemoval")) {
@@ -59,7 +59,7 @@ public class BlockRedstone implements Listener {
                         entity.remove();
                         if (!alreadySent) {
                             System.out.println(ChatColor.GREEN + "Removed " + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + " from a laggy chunk");
-                            Utils.sendOpMessage("[&b&lL2X9&r&3&lCore&r] &6Removed &r&1" + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + "&r&6 from a laggy chunk");
+                            Utils.sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed &r&1" + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + "&r&6 from a laggy chunk");
                             alreadySent = true;
                         }
                     }
@@ -83,7 +83,7 @@ public class BlockRedstone implements Listener {
                     }
                     if (leverHashMap.get(player) > 5) {
                         event.setCancelled(true);
-                        Utils.kickPlayer(player, Utils.getPrefix() + "&6AntiFaggotExploit by 254n_m");
+                        Utils.kickPlayer(player, Utils.getPrefix() + "&6AntiFaggotExploit by Leee suck my fucking dick");
                         leverHashMap.remove(player);
                     }
                 }
@@ -112,16 +112,6 @@ public class BlockRedstone implements Listener {
             if (online.isOp()) {
                 Utils.sendClickableMessage(online, message, hoverText, cmd, action);
             }
-        }
-    }
-
-    @EventHandler
-    public void onPlace(BlockPlaceEvent event) {
-        Chunk chunk = event.getBlock().getChunk();
-        if (Utils.countBlockPerChunk(chunk, Material.REDSTONE_WIRE) > plugin.getConfig().getInt("Redstone.Amount-per-chunk")) {
-            event.setCancelled(true);
-            Utils.sendMessage(event.getPlayer(), Utils.getPrefix() + "&6Please limit redstone to &r&c16&r&6 per chunk");
-
         }
     }
 }
