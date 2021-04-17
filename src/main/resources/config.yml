@@ -1,4 +1,4 @@
-# LeeesExploitFixer 3.0.3 RELEASE
+# LeeesExploitFixer 3.0.4 RELEASE
 # contact Leee#9594 on discord
 # for help with this plugin
 
@@ -62,7 +62,6 @@ Elytra:
   Message: "&6&l[&b&lLEF&6&l]&6&6 PacketElytraFly is currently disabled due to it causing tons of lag"
 Redstone:
   Disable-TPS: 15
-  Amount-per-chunk: 15
 #Misc config shit
 #Message to send when a player tries to use a 32k or strength 255
 IllegalDamage:
