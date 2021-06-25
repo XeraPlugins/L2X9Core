@@ -17,7 +17,6 @@ public class WitherSpawn implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}

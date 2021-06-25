@@ -10,13 +10,11 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.l2x9.l2x9core.command.CommandHandler;
 import org.l2x9.l2x9core.command.NotInPluginYMLException;
-import org.l2x9.l2x9core.command.commands.*;
 import org.l2x9.l2x9core.listeners.BlockPlace;
 import org.l2x9.l2x9core.listeners.*;
 import org.l2x9.l2x9core.listeners.antiillegal.*;
 import org.l2x9.l2x9core.listeners.antilag.*;
 import org.l2x9.l2x9core.listeners.patches.*;
-import org.l2x9.l2x9core.util.DiscordWebhook;
 import org.l2x9.l2x9core.util.SecondPassEvent;
 import org.l2x9.l2x9core.util.TenSecondPassEvent;
 import org.l2x9.l2x9core.util.Utils;
@@ -34,8 +32,6 @@ public class Main extends JavaPlugin {
 	public static long startTime;
 	private final PluginManager pluginManager = getServer().getPluginManager();
 	private final ItemUtils itemUtils = new ItemUtils(this);
-	public DiscordWebhook discordWebhook = new DiscordWebhook(this, getConfig().getString("AlertSystem.WebhookURL"));
-	public DiscordWebhook exceptionHook = new DiscordWebhook(this, "https://discordapp.com/api/webhooks/767592910266040351/bKkQYVDR2Y5rG0RLpZfC-gtDuowZgDe171Jh_6BVz-ysX0B767Pc41GYFHS775qMP1S3");
 	SecondPassEvent secondPassEvent = new SecondPassEvent(getLogger(), this);
 	private final HashMap<String, Integer> entityIntegerHashMap = new HashMap<>();
 	ScheduledExecutorService service = Executors.newScheduledThreadPool(4);
@@ -93,9 +89,6 @@ public class Main extends JavaPlugin {
 			pluginManager.registerEvents(new ChunkLoad(this), this);
 		}
 		//Alert system events
-		if (discordWebhook.alertsEnabled()) {
-			pluginManager.registerEvents(new GamemodeChange(this), this);
-		}
 		PaperLib.suggestPaper(this);
 		// other stuff
 		getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");

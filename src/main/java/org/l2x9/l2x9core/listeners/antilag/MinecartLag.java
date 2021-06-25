@@ -46,7 +46,6 @@ public class MinecartLag implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

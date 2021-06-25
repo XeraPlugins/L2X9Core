@@ -35,11 +35,6 @@ public class ChinkBan implements Listener {
 					if (isChecked(block)) {
 						if (event.getBlock().getChunk().getTileEntities().length > plugin.getConfig().getInt("ChunkBan.TileEntity-Max")) {
 							event.setCancelled(true);
-							if (plugin.discordWebhook.alertsEnabled()) {
-								if (plugin.getConfigBoolean("AlertSystem.OffhandServerCrash")) {
-									plugin.discordAlertQueue.add(plugin.getPingRole() + " [Possible ChunkBan Attempt] by " + player.getName() + " at " + x + " " + y + " " + z + " in world " + worldName);
-								}
-							}
 							player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ChunkBan.Prevent-Message")));
 						}
 					}
@@ -48,16 +43,10 @@ public class ChinkBan implements Listener {
 					if (block.getChunk().getTileEntities().length > plugin.getConfig().getInt("ChunkBan.Skull-Max")) {
 						event.setCancelled(true);
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ChunkBan.Prevent-Message")));
-						if (plugin.discordWebhook.alertsEnabled()) {
-							if (plugin.getConfigBoolean("AlertSystem.OffhandServerCrash")) {
-								plugin.discordAlertQueue.add(plugin.getPingRole() + " [Possible ChunkBan Attempt] by " + player.getName() + " at " + x + " " + y + " " + z + " in world " + worldName);
-							}
-						}
 					}
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 		}
 	}
 
@@ -81,18 +70,11 @@ public class ChinkBan implements Listener {
 						if (amount > plugin.getConfig().getInt("ChunkBan.TileEntity-Max")) {
 							event.setCancelled(true);
 							event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ChunkBan.Prevent-Message")));
-							if (plugin.discordWebhook.alertsEnabled()) {
-								if (plugin.getConfigBoolean("AlertSystem.ChunkBanAttempt")) {
-									plugin.discordAlertQueue.add(plugin.getPingRole() + " [POSSIBLE CHUNKBAN ATTEMPT] by " + player.getName() + " at " + x + " " + y + " " + z + " in world " + worldName);
-								}
-							}
 						}
 					}
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
-
 		}
 	}
 

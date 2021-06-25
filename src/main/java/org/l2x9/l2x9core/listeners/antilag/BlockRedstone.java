@@ -3,7 +3,6 @@ package org.l2x9.l2x9core.listeners.antilag;
 import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -11,11 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.l2x9.l2x9core.Main;
-import org.l2x9.l2x9core.util.DiscordWebhook;
 import org.l2x9.l2x9core.util.SecondPassEvent;
 import org.l2x9.l2x9core.util.Utils;
 
@@ -42,15 +39,6 @@ public class BlockRedstone implements Listener {
                 event.setNewCurrent(0);
                 event.getBlock().setType(Material.AIR);
                 sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed a lag machine at &r&1" + block.getLocation().getBlockX() + " " + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + "&r&6 owned by &r&1 " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), "&aClick to telepot to the player", "/tp " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), ClickEvent.Action.RUN_COMMAND);
-                if (plugin.discordWebhook.alertsEnabled()) {
-                    if (!(alertAmount > 10)) {
-                        if (plugin.getConfigBoolean("AlertSystem.LagMachineRemoval")) {
-                           plugin.discordAlertQueue.add(plugin.getPingRole() + " [Possible LagMachine] " + fagMachine + " Owned by " + Utils.getNearbyPlayer(50, block.getLocation()).getName());
-                        }
-                    } else {
-                        alertAmount = 0;
-                    }
-                }
                 //event.getBlock().getLocation().getWorld().strikeLightning(block.getLocation());
                 System.out.println(ChatColor.translateAlternateColorCodes('&', "&a" + fagMachine));
                 boolean alreadySent = false;
@@ -66,7 +54,7 @@ public class BlockRedstone implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            //Utils.reportException(throwable);
+            //
         }
     }
 
@@ -89,7 +77,7 @@ public class BlockRedstone implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
+            
 
         }
     }
@@ -97,14 +85,6 @@ public class BlockRedstone implements Listener {
     @EventHandler
     public void onSecond(SecondPassEvent event) {
         Utils.secondPass(leverHashMap);
-        if (plugin.discordAlertQueue.size() > 0) {
-            DiscordWebhook webhook = plugin.discordWebhook;
-            String line = plugin.discordAlertQueue.poll();
-            if (line != null && !line.isEmpty()) {
-                webhook.setContent(line);
-                webhook.execute();
-            }
-        }
     }
 
     private void sendOpMessage(String message, String hoverText, String cmd, ClickEvent.Action action) {

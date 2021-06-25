@@ -29,7 +29,6 @@ public class ChunkLoad implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

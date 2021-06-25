@@ -16,7 +16,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
-public class ItemUtils {
+public class    ItemUtils {
     Main plugin;
 
     public ItemUtils(Main plugin) {
@@ -213,14 +213,8 @@ public class ItemUtils {
             }
             if (illegalsFound) {
                 Utils.println(Utils.getPrefix() + "&6Deleted illegals " + itemStack.getType() + " " + itemStack.getI18NDisplayName() + " " + itemStack.getEnchantments());
-                if (plugin.discordWebhook.alertsEnabled()) {
-                    if (plugin.getConfigBoolean("AlertSystem.IllegalItemAlert")) {
-                        plugin.discordAlertQueue.add("Found illegals " + itemStack.getType() + " " + itemStack.getI18NDisplayName() + " " + itemStack.getEnchantments());
-                    }
-                }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

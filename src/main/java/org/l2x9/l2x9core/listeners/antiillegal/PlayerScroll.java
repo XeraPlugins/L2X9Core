@@ -22,7 +22,6 @@ public class PlayerScroll implements Listener {
                 plugin.getItemUtils().deleteIllegals(player.getInventory());
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

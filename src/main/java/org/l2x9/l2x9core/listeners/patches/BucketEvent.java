@@ -43,14 +43,8 @@ public class BucketEvent implements Listener {
 					|| event.getBlockClicked().getLocation().getWorld().getBlockAt(xPos, y, z)
 					.getType() == Material.ENDER_PORTAL) {
 				event.setCancelled(true);
-				if (plugin.discordWebhook.alertsEnabled()) {
-					if (plugin.getConfigBoolean("AlertSystem.PreventEndPortalDestroy")) {
-						plugin.discordAlertQueue.add(plugin.getPingRole() + " [EndPortalDestroyAttempt] by " + event.getPlayer().getName() + " at " + x + " " + y + " " + z);
-					}
-				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 		}
 	}
 
@@ -75,15 +69,8 @@ public class BucketEvent implements Listener {
 					|| event.getBlock().getLocation().getWorld().getBlockAt(xPos, y, z)
 					.getType() == Material.ENDER_PORTAL) {
 				event.setCancelled(true);
-				if (plugin.discordWebhook.alertsEnabled()) {
-					if (plugin.getConfigBoolean("AlertSystem.PreventEndPortalDestroy")) {
-						plugin.discordAlertQueue.add(plugin.getPingRole() + "[EndPortalDestroyAttempt] by " + Utils.getNearbyPlayer(20, event.getBlock().getLocation()).getName() + " at " + x + " " + y + " " + z);
-					}
-				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
-
 		}
 	}
 }

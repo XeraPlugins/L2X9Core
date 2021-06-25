@@ -44,7 +44,6 @@ public class Elytra implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
         }
     }
 
@@ -118,7 +117,6 @@ public class Elytra implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

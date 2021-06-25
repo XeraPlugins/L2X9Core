@@ -33,15 +33,9 @@ public class Offhand implements Listener {
 				}
 				if (offhandMap.get(player) > 10) {
 					player.kickPlayer("&cPacket Exploit Detected");
-					if (plugin.discordWebhook.alertsEnabled()) {
-						if (plugin.getConfigBoolean("AlertSystem.OffhandServerCrash")) {
-							plugin.discordAlertQueue.add(plugin.getPingRole() + " [Possible offhand server crash attempt] by " + player.getName());
-						}
-					}
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}

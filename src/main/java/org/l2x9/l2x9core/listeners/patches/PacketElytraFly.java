@@ -44,7 +44,6 @@ public class PacketElytraFly implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}

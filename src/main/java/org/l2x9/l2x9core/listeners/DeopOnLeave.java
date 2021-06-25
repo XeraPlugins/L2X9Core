@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.l2x9.l2x9core.Main;
 
-public class DeopOnLeave implements Listener {
+public class    DeopOnLeave implements Listener {
     Main plugin;
     public DeopOnLeave(Main plugin) {
        this.plugin = plugin;

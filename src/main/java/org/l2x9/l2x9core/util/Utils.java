@@ -227,37 +227,6 @@ public class Utils {
 				violationEntry.setValue(violationEntry.getValue() - 1);
 		}
 	}
-
-	public static void reportException(Throwable error) {
-		Thread thread = new Thread(() -> {
-			if (PaperLib.isPaper()) {
-				Utils.println(Utils.getPrefix() + "&6Has had the following error this has been reported to 254n_m via a DiscordWebhook if this is not resolved by the next update please contact 254n-m#5890 on discord!");
-				error.printStackTrace();
-				StringBuilder builder = new StringBuilder();
-				for (StackTraceElement stackTraceElement : error.getStackTrace()) {
-					builder.append(stackTraceElement.toString().concat("\\n"));
-				}
-				String concat = builder.toString().concat("ErrorCause: " + error).concat("\\nPluginVersion: " + plugin.getDescription().getVersion()).concat("\\nServerVersion: " + getServerBrand());
-				if (!(concat.toCharArray().length > 1994)) {
-					plugin.exceptionHook.setContent("```" + concat + "```");
-					plugin.exceptionHook.execute();
-				} else {
-					Hastebin hastebin = new Hastebin();
-					try {
-						plugin.exceptionHook.setContent("Error posted at: " + hastebin.post(concat.replace("\\n", "\n"), false));
-						plugin.exceptionHook.execute();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			} else {
-				PaperLib.suggestPaper(plugin);
-			}
-		});
-		thread.start();
-		System.gc();
-	}
-
 	public static String getServerBrand() {
 		if (!PaperLib.isSpigot() && !PaperLib.isPaper()) {
 			return "CraftBukkit";

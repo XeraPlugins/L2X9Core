@@ -58,7 +58,6 @@ public class PlayerChat implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}

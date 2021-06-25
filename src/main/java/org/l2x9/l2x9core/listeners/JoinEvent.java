@@ -36,13 +36,7 @@ public class JoinEvent implements Listener {
 							plugin.getConfig().getString("FirstJoin.Message").replace("{Player}", player.getName())));
 				}
 			}
-			if (plugin.discordWebhook.alertsEnabled() && player.isOp()) {
-				if (plugin.getConfigBoolean("AlertSystem.OppedPlayerJoin")) {
-					plugin.discordAlertQueue.add(plugin.getPingRole() + " [OppedPlayerJoin] Player with op by the name of " + player.getName() + " Joined the server");
-				}
-			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 		}
 	}
 

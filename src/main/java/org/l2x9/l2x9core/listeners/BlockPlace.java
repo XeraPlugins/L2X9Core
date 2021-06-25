@@ -26,7 +26,6 @@ public class BlockPlace implements Listener {
 					case BEDROCK:
 						event.setCancelled(true);
 						Utils.sendMessage(player, plugin.getConfig().getString("IllegalBlock-Place.Bedrock"));
-						alertDiscord(player, event.getBlock());
 						event.getPlayer().getInventory().getItemInMainHand().setType(Material.AIR);
 						break;
 					case ENDER_PORTAL_FRAME:
@@ -34,7 +33,6 @@ public class BlockPlace implements Listener {
 							if (!(player.getInventory().getItemInOffHand().getType() == Material.EYE_OF_ENDER)) {
 								event.setCancelled(true);
 								Utils.sendMessage(player, plugin.getConfig().getString("IllegalBlock-Place.End_Portal_Frame"));
-								alertDiscord(player, event.getBlock());
 								event.getPlayer().getInventory().getItemInMainHand().setType(Material.AIR);
 							}
 						}
@@ -42,19 +40,16 @@ public class BlockPlace implements Listener {
 					case BARRIER:
 						event.setCancelled(true);
 						Utils.sendMessage(player, plugin.getConfig().getString("IllegalBlock-Place.Barrier"));
-						alertDiscord(player, event.getBlock());
 						event.getPlayer().getInventory().getItemInMainHand().setType(Material.AIR);
 						break;
 					case MOB_SPAWNER:
 						event.setCancelled(true);
 						Utils.sendMessage(player, plugin.getConfig().getString("IllegalBlock-Place.Mob_Spawner"));
-						alertDiscord(player, event.getBlock());
 						event.getPlayer().getInventory().getItemInMainHand().setType(Material.AIR);
 						break;
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}
@@ -66,16 +61,7 @@ public class BlockPlace implements Listener {
 				event.setCancelled(true);
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
-		}
-	}
-
-	private void alertDiscord(Player player, Block block) {
-		if (plugin.discordWebhook.alertsEnabled()) {
-			if (plugin.getConfigBoolean("AlertSystem.IllegalBlockPlace")) {
-				plugin.discordAlertQueue.add(plugin.getPingRole() + "[IllegalBlockPlaceAttempt] block type " + block.getType() + " by " + player.getName());
-			}
 		}
 	}
 }

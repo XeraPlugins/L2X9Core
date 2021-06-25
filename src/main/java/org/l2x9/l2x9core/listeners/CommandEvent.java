@@ -35,7 +35,6 @@ public class CommandEvent implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
 
 		}
 	}

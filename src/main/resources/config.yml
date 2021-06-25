@@ -1,4 +1,4 @@
-# LeeesExploitFixer 3.0.4 RELEASE
+# LeeesExploitFixer 3.0.5 RELEASE
 # contact Leee#9594 on discord
 # for help with this plugin
 
@@ -151,24 +151,6 @@ ChestLagFix:
   MaxOpensPerSecond: 16
   KickMessage: "&6&l[&b&lLEF&6&l]&6&c [AntiChestLag]&r&6 You have lost connection to the server"
   RemoveUnicodeBooks: false
-#What should we notify you of on discord
-#WARNING IF YOU HAVE THIS ENABLED AND DO NOT INPUT A WEBHOOK URL IT WILL HAVE ERRORS.
-#Here is a video on how to configure this feature https://youtu.be/0qoJqk6PJas
-AlertSystem:
-  Alerts-Enabled: false
-  WebhookURL: ""
-  #What role do we ping to get this ping the role you want but put a backslash there (i.e \@Owner) then copy paste the tag it gives you on discord and paste it here
-  PingRole: ""
-  #What events do we need to alert you of
-  LagMachineRemoval: true
-  ChunkBanAttempt: true
-  OffhandServerCrash: true
-  ChestLagFix: true
-  IllegalItemAlert: true
-  PreventEndPortalDestroy: true
-  IllegalBlockPlace: true
-  OppedPlayerJoin: true
-  GamemodeChange: true
 #These are the connection messages for when a player joins / leaves
 #Use & for colours and %player% as a placeholder for the players name
 Connection:

@@ -29,7 +29,7 @@ public class DupeEvt implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
+			
 
 		}
 	}
@@ -43,7 +43,7 @@ public class DupeEvt implements Listener {
 				}
 			}
 		} catch (Error | Exception throwable) {
-			Utils.reportException(throwable);
+			
 
 		}
 	}

@@ -23,7 +23,6 @@ public class InventoryOpen implements Listener {
                 plugin.getItemUtils().deleteIllegals(inv);
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

@@ -66,7 +66,6 @@ public class ItemPickup implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }

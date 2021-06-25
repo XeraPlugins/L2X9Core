@@ -42,7 +42,6 @@ public class InventoryClose implements Listener {
                 }
             }
         } catch (Error | Exception throwable) {
-            Utils.reportException(throwable);
 
         }
     }
