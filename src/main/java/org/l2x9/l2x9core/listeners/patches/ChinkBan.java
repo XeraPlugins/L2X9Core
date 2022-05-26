@@ -62,7 +62,7 @@ public class ChinkBan implements Listener {
 						Player player = event.getPlayer();
 						String worldName = event.getPlayer().getWorld().getName();
 						int amount = 0;
-						for (Entity entity : event.getPlayer().getChunk().getEntities()) {
+						for (Entity entity : event.getPlayer().getLocation().getChunk().getEntities()) {
 							if (entity instanceof ItemFrame) {
 								amount++;
 							}

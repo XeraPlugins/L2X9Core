@@ -1,6 +1,6 @@
 package org.l2x9.l2x9core;
 
-import io.papermc.lib.PaperLib;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.l2x9.l2x9core.command.CommandHandler;
 import org.l2x9.l2x9core.command.NotInPluginYMLException;
 import org.l2x9.l2x9core.listeners.BlockPlace;
@@ -41,6 +42,12 @@ public class Main extends JavaPlugin {
 	public final Queue<String> discordAlertQueue = new LinkedList<>();
 
 	public void onEnable() {
+		BukkitScheduler scheduler = Bukkit.getScheduler();
+		scheduler.runTaskTimer(this, () -> {
+			if (Utils.getTps() <= 15) {
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "clearentities clear");
+			}
+		}, 20L * 1L /*<-- the initial delay */, 20L * 5L /*<-- the interval */);
 		new Utils(this);
 		int pluginId = 9128;
 		new Metrics(this, pluginId);
@@ -51,9 +58,7 @@ public class Main extends JavaPlugin {
 		getLogger().info("by Nate Legault enabled");
 		pluginManager.registerEvents(new BlockPlace(this), this);
 		pluginManager.registerEvents(new Offhand(this), this);
-		if (PaperLib.isPaper()) {
 			pluginManager.registerEvents(new GateWay(), this);
-		}
 		try {
 			commandHandler.registerCommands();
 		} catch (NotInPluginYMLException e) {
@@ -72,7 +77,7 @@ public class Main extends JavaPlugin {
 		pluginManager.registerEvents(new BlockPhysics(this), this);
 		pluginManager.registerEvents(new BucketEvent(this), this);
 		pluginManager.registerEvents(new MinecartLag(this), this);
-		pluginManager.registerEvents(new PlayerChat(this), this);
+		//pluginManager.registerEvents(new PlayerChat(this), this);
 		pluginManager.registerEvents(new ChestLagFix(this), this);
 		pluginManager.registerEvents(new dispensor(this), this);
 		pluginManager.registerEvents(new PacketElytraFly(this), this);
@@ -89,20 +94,9 @@ public class Main extends JavaPlugin {
 			pluginManager.registerEvents(new ChunkLoad(this), this);
 		}
 		//Alert system events
-		PaperLib.suggestPaper(this);
 		// other stuff
 		getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		getCommand("toggleconnectionmessages").setExecutor(connectionMessages);
-		//Server specific events
-		if (pluginManager.getPlugin("SalC1Dupe") != null) {
-			if (getSalDupeVersion().equals("1.0-SNAPSHOT")) {
-				pluginManager.registerEvents(new DupeEvt(), this);
-			} else {
-				Utils.println(Utils.getPrefix() + "&cThis version of SalC1Dupe is outdated Current version of SalC1Dupe on the server " + getSalDupeVersion() + " Most recent version 1.0-SNAPSHOT");
-			}
-		} else {
-			Utils.println(Utils.getPrefix() + "&eCould not find SalC1Dupe installed on the server");
-		}
 		service.scheduleAtFixedRate(() -> pluginManager.callEvent(secondPassEvent), 1, 1, TimeUnit.SECONDS);
 		service.scheduleAtFixedRate(() -> pluginManager.callEvent(tenSecondPassEvent), 1, 10, TimeUnit.SECONDS);
 	}

@@ -25,13 +25,7 @@ public class Utils {
 	}
 
 	public static double getTps() {
-		if (PaperLib.isPaper()) {
 			return (Math.round(Bukkit.getServer().getTPS()[0]));
-		} else {
-			plugin.getLogger().log(Level.SEVERE, "LeeesExploitFixer dose not work correctly on " + getServerBrand() + " please upgrade to paper");
-			PaperLib.suggestPaper(plugin);
-			return 20;
-		}
 	}
 
 	public static ChatColor getTPSColor(String input) {

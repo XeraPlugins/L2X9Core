@@ -94,5 +94,10 @@
             <version>1.0.5</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.destroystokyo.paper</groupId>
+            <artifactId>paper-jar</artifactId>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
