@@ -40,7 +40,7 @@ public class Elytra implements Listener {
                 Player player = (Player) event.getEntity();
                 if (Utils.getTps() <= plugin.getConfig().getInt("Elytra.Disable-TPS")) {
                     event.setCancelled(true);
-                    Utils.sendMessage(player, plugin.getConfig().getString("ElytraLowTPS.Message").replace("{tps}", "" + plugin.getConfig().getInt("Elytra.Disable-TPS")));
+                    Utils.sendMessage(player, plugin.getConfig().getString("ElytraLowTPS.Message").replace("{tps}", "" + plugin.getConfig().getInt("Elytra.Disable-TPS")).replaceAll("&","§"));
                 }
             }
         } catch (Error | Exception throwable) {
@@ -53,7 +53,7 @@ public class Elytra implements Listener {
             if (Utils.getTps() <= plugin.getConfig().getInt("Elytra.Disable-TPS")) {
                 if (event.getPlayer().isGliding()) {
                     event.getPlayer().setGliding(false);
-                    Utils.sendMessage(event.getPlayer(), plugin.getConfig().getString("ElytraLowTPS.Message").replace("{tps}", "" + plugin.getConfig().getInt("Elytra.Disable-TPS")));
+                    Utils.sendMessage(event.getPlayer(), plugin.getConfig().getString("ElytraLowTPS.Message").replace("{tps}", "" + plugin.getConfig().getInt("Elytra.Disable-TPS")).replaceAll("&","§"));
                 }
             }
             Player player = event.getPlayer();
@@ -71,13 +71,13 @@ public class Elytra implements Listener {
                            player.getInventory().setChestplate(null);
                            if (plugin.getConfigBoolean("Elytra.EnableOpMessages")) {
                                if (plugin.getConfigBoolean("Elytra.EnableDamage")) {
-                                   Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()));
-                                   player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                                   Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()).replaceAll("&","§"));
+                                   player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                    player.setGliding(false);
                                    player.damage(plugin.getConfig().getInt("Elytra.DamageAmount"));
                                } else {
-                                   Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()));
-                                   player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                                   Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()).replaceAll("&","§"));
+                                   player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                    player.setGliding(false);
                                }
                            } else {
@@ -94,22 +94,22 @@ public class Elytra implements Listener {
                    } else {
                        if (plugin.getConfigBoolean("Elytra.EnableOpMessages")) {
                            if (plugin.getConfigBoolean("Elytra.EnableDamage")) {
-                               Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()));
-                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                               Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()).replaceAll("&","§"));
+                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                player.setGliding(false);
                                player.damage(plugin.getConfig().getInt("Elytra.DamageAmount"));
                            } else {
-                               Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()));
-                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                               Utils.sendOpMessage(plugin.getConfig().getString("Elytra.SpeeedLimitReached-ops").replace("{name}", "" + player.getName()).replaceAll("&","§"));
+                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                player.setGliding(false);
                            }
                        } else {
                            if (plugin.getConfigBoolean("Elytra.EnableDamage")) {
-                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                player.setGliding(false);
                                player.damage(plugin.getConfig().getInt("Elytra.DamageAmount"));
                            } else {
-                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message"));
+                               player.sendMessage(plugin.getConfig().getString("Elytra.SpeedLimitReached-message").replaceAll("&","§"));
                                player.setGliding(false);
                            }
                        }

@@ -1,4 +1,4 @@
-# LeeesExploitFixer 3.1.1 RELEASE
+# LeeesExploitFixer 3.1.2 RELEASE
 # There is no support for this plugin
 # other than what is provided on the github
 
@@ -200,6 +200,6 @@ EntityAmounts:
     - "primed_tnt:5"
     - "dropped_item:50"
 
-      
+
 #Deop opped players when they leave
 DeopOnLeave: true
