@@ -1,6 +1,6 @@
 LeeesExploitFixer is a simple minecraft server exploit fixer for paper 1.12.2 
 Latest: 3.1.4 (Paper 1.12.2 ONLY)
-join our discord: https://discord.gg/H5RDy36apA(NVM PistonMaster Nuked it)
+join our discord: https://discord.gg/H5RDy36apA <-- (NVM PistonMaster Nuked it)
 ___
 
 ## Features
