@@ -1,5 +1,5 @@
-LeeesExploitFixer 3.0 is a simple minecraft server exploit fixer for paper 1.12.2 
-Latest: 3.1.0 (Paper 1.12.2 ONLY)
+LeeesExploitFixer 3.1 is a simple minecraft server exploit fixer for paper 1.12.2 
+Latest: 3.1.3 (Paper 1.12.2 ONLY)
 join our discord: https://discord.gg/H5RDy36apA
 ___
 
