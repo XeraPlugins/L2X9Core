@@ -1,5 +1,5 @@
 name: LeeesExploitFixer
-version: 3.1.2
+version: 3.1.3
 main: org.l2x9.l2x9core.Main
 authors: [ 254n_m, Leeewith3Es ]
 description:  ${project.description}

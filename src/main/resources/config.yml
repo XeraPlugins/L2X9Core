@@ -1,4 +1,4 @@
-# LeeesExploitFixer 3.1.2 RELEASE
+# LeeesExploitFixer 3.1.3 RELEASE
 # There is no support for this plugin
 # other than what is provided on the github
 
@@ -175,9 +175,9 @@ BlockPhysics-disable-tps: -1
 
 #This is to prevent people from crashing / lagging the server by spam opening chest and other containers
 ChestLagFix:
-  MaxOpensPerSecond: 16
+  MaxOpensPerSecond: 8
   KickMessage: "&6&l[&18b&98t&6&l]&6&c [AntiChestLag]&r&6 You have lost connection to the server"
-  RemoveUnicodeBooks: false
+  RemoveUnicodeBooks: true
 
 
 #These are the connection messages for when a player joins / leaves
