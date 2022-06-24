@@ -81,12 +81,13 @@ public class Main extends JavaPlugin {
 		pluginManager.registerEvents(new ChestLagFix(this), this);
 		pluginManager.registerEvents(new dispensor(this), this);
 		pluginManager.registerEvents(new PacketElytraFly(this), this);
-		pluginManager.registerEvents(connectionMessages, this);
+		//pluginManager.registerEvents(connectionMessages, this);
 		pluginManager.registerEvents(new DeopOnLeave(this), this);
 		// AntiIllegal events
 		pluginManager.registerEvents(new org.l2x9.l2x9core.listeners.antiillegal.BlockPlace(this), this);
 		pluginManager.registerEvents(new HopperTansfer(this), this);
 		pluginManager.registerEvents(new InventoryClose(this), this);
+		pluginManager.registerEvents(new Witherlag(this), this);
 		pluginManager.registerEvents(new InventoryOpen(this), this);
 		pluginManager.registerEvents(new ItemPickup(this), this);
 		pluginManager.registerEvents(new PlayerScroll(this), this);
@@ -96,7 +97,7 @@ public class Main extends JavaPlugin {
 		//Alert system events
 		// other stuff
 		getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-		getCommand("toggleconnectionmessages").setExecutor(connectionMessages);
+		//getCommand(	"toggleconnectionmessages").setExecutor(connectionMessages);
 		service.scheduleAtFixedRate(() -> pluginManager.callEvent(secondPassEvent), 1, 1, TimeUnit.SECONDS);
 		service.scheduleAtFixedRate(() -> pluginManager.callEvent(tenSecondPassEvent), 1, 10, TimeUnit.SECONDS);
 	}

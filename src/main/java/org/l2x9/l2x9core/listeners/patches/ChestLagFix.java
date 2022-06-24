@@ -45,11 +45,12 @@ public class ChestLagFix implements Listener {
                     deleteNBTBooks(event.getInventory());
                 }
                 if (chestHashMap.get(player) > maxSpam) {
+                    chestHashMap.remove(player);
                     Utils.kickPlayer(player, kickMessage);
                 }
             }
         } catch (Error | Exception throwable) {
-
+            chestHashMap.clear();
         }
     }
 

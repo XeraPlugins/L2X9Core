@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.l2x9.l2x9core.Main;
 
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.logging.Level;
 
 public class Utils {
 	private static Main plugin;
-
+	private static final DecimalFormat format = new DecimalFormat("#.##");
 	public Utils(Main plugin) {
 		Utils.plugin = plugin;
 	}
@@ -45,6 +46,14 @@ public class Utils {
 		for (int i = 0; i < 100; i++) {
 			player.spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(), Integer.MAX_VALUE, 1, 1, 1);
 		}
+	}
+
+	public static String formatLocation(Location location) {
+		double x = location.getX();
+		double y = location.getY();
+		double z = location.getZ();
+		World world = location.getWorld();
+		return "&3world&r&a " + world.getName() + " &r&3X:&r&a " + format.format(x) + " &r&3Y:&r&a " + format.format(y) + " &r&3Z:&r&a " + format.format(z);
 	}
 
 	public static void sendMessage(Player player, String string) {
@@ -118,6 +127,14 @@ public class Utils {
 		long days = ms / 86400000L;
 		return String.format("%dd %02dh %02dm %02ds", days, hours, minutes, seconds);
 	}
+	public static String translateChars(String input) {
+		return ChatColor.translateAlternateColorCodes('&', input);
+	}
+	public static void log(String message) {
+		StackTraceElement element = Thread.currentThread().getStackTrace()[2];
+		message = translateChars(message);
+	}
+
 
 	public static String getPrefix() {
 		return "&6&l[&b&lLEF&6&l]&6 ";

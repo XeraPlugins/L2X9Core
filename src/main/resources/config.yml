@@ -1,6 +1,6 @@
-# LeeesExploitFixer 3.1.0 RELEASE
-# contact Leee#9594 on discord
-# for help with this plugin
+# LeeesExploitFixer 3.1.1 RELEASE
+# There is no support for this plugin
+# other than what is provided on the github
 
 #Messages to send the player when they try to place illegal blocks
 IllegalBlock-Place:
@@ -9,12 +9,16 @@ IllegalBlock-Place:
   Barrier: '&6&l[&18b&98t&6&l]&6 &6That block is not allowed'
   End_Portal_Frame: '&6&l[&18b&98t&6&l]&6 &6That block is not allowed'
   Mob_Spawner: '&6&l[&18b&98t&6&l]&6 &6That block is not allowed'
+
+
 #ChunkBan skull limit tile entity limit and prevent message
 ChunkBan:
   Enabled: true
   Prevent-Message: '&6&l[&18b&98t&6&l]&6 &6ChunkBan has been disabled due to an exploit (^:'
   TileEntity-Max: 500
   Skull-Max: 100
+
+
 #Nether top and bottom layers
 Nether:
   Enabled: true
@@ -23,16 +27,15 @@ Nether:
   Bottom-Layer: 0
   Bottom-message: '&6&l[&18b&98t&6&l]&6 &6The nether bottom has been disabled due to lag'
   top-bottom-do-damage: true
-#Raidus around spawn to disable /home in
-#Set 0 to disable
-Spawn:
-  Raidus: 500
-  Message: "&6[&18b&98t&6] You must be&r&c %r% &r&6 blocks from spawn to use /home "
+
+
 #Message to send to the server when a player first joins
 #Use {Player} as a place holder for the players name
 FirstJoin:
   Enabled: true
-  Message: '&6[&18b&98t&6] &c{Player}&6 has joined the &18b&98t &6for the first time'
+  Message: '&6[&18b&98t&6] &c{Player}&6 has joined &18b&98t &6for the first time'
+
+
 #Elytra/redstone disable TPS values keep in mind this is a double so it can be like 13.2255
 #Set 0 to disable 
 Elytra:
@@ -60,33 +63,56 @@ Elytra:
   #Sends a message to the player when they try to use PacketElytraFly
   SendMessage: true
   Message: "&6&l[&18b&98t&6&l]&6&6 PacketElytraFly is currently disabled due to it causing tons of lag"
+
+
+#TPS to disable redstone at
 Redstone:
   Disable-TPS: 15
+
+
 #Misc config shit
 #Message to send when a player tries to use a 32k or strength 255
 IllegalDamage:
   Message: "&6&l[&18b&98t&6&l]&6&6 How did you even get a 32k out to begin with"
+
+
 #Player attempts to use or drink an illegal potion or use an illegal tipped arrow
 IllegalPotion:
   Message: "&6&l[&18b&98t&6&l]&6&6 Sorry those are patched"
+
+
 #Message to send the player when they use an elytra in low tps use {tps} to get the elytra disable tps
 ElytraLowTPS:
   Message: "&6&l[&18b&98t&6&l]&6 &6Elytras are disabled if the tps is below&r&c {tps}"
+
+
 UnbookBan:
   Message: "&6&l[&18b&98t&6&l]&6&6 You have been unbookbanned"
+
+
 #Message for /discord use & for colors
 #make sure to add the permission l2x9core.command.discord
 Discord: "&6[&18b&98t&6] Join us on discord at &chttp://discord.8b8t.me"
+
+
 #Ammount of vehicles allowed in a chunk
 Minecart-per-chunk:
   limit: 20
+
+
 #TP on an entity exploit prevent message
 tp.prevent:
   message: "&6&l[&18b&98t&6&l]&6 &6Patched"
+
+
 #World name for the /world command and the fortress dat deleter
 World-name: "0b0t"
+
+
 #This will delete .dat files that cause memory issues every time the server shuts down
 DeleteFortressDat: true
+
+
 #AntiIllegal check toggles
 #Only enable ChunkLoad of you have a massive problem with illegals on your server
 Antiillegal:
@@ -111,42 +137,56 @@ Antiillegal:
     - "PORTAL"
     - "STRUCTURE_BLOCK"
     - "STRUCTURE_VOID"
+
+
 #Help menu use & for colors
 Help:
-  #Enable the help menu from l2x9core
-  Enabled: false
+  #Enable the help menu from LEF
+  Enabled: true
   List:
-    - "&6-----------------------------------------------------"
-    - "&3/ignore <name> to ignore a player."
-    - "&3/ignorelist to list ignored players."
-    - "&3/r <message> to reply to the last person that messaged you."
-    - "&3/l <message> to message the last person that you messaged."
-    - "&3/w <name> <message> OR /msg <name> <message> to pm a player."
-    - "&3/toggleconnectionmsgs to toggle join and leave messages."
-    - "&3/togglechat to toggle the default chat."
-    - "&3/toggledeathmsg to toggle all death messages."
-    - "&3/kill to kill yourself."
-    - "&3/stats to get world size and how many players have joined."
-    - "&3/playtime to see a player's total playtime."
-    - "&3/mostplaytime to show top playtimes."
-    - "&3/discord to join the L2X9 discord."
-    - "&6-----------------------------------------------------"
+    - '&1--------------------------------------'
+    - '&6Visit &chttps://www.8b8t.me &6to read the rules'
+    - '&c/tpa &6to teleport to another player'
+    - '&c/sethome &6to set a home at your location'
+    - '&c/delhome &6to delete a home you set'
+    - '&c/home &6to teleport to a home you set'
+    - '&c/skin set &6to set your skin'
+    - '&c/nc &6to set name color (donator1 or higher) only'
+    - '&c/nick &6set a nickname (donator2 or higher) only'
+    - '&c/vote &6to vote for 8b8t'
+    - '&c/discord &6get an invite to the 8b8t discord'
+    - '&c/kill &6to kill your self'
+    - '&c/ignore &6to ignore other players'
+    - '&c/msg &6to message other players'
+    - '&c/changepass &6To change your password'
+    - '&c/worldstats &6view the servers size'
+    - '&6Visit &chttps://donate.8b8t.me &6to donate'
+
+
 #Formatting for the say command use {message} as a place holder for the message use & for colours
 #Colour codes also work in the message
 SayCommandFormat: "&6&l[&18b&98t&6&l]&6 {message}"
+
+
 #water / lava flowing disable tps this is useful on new servers with lots of block physics updates that cause lag
 #Set -1 to disable
 BlockPhysics-disable-tps: -1
+
+
 #This is to prevent people from crashing / lagging the server by spam opening chest and other containers
 ChestLagFix:
   MaxOpensPerSecond: 16
   KickMessage: "&6&l[&18b&98t&6&l]&6&c [AntiChestLag]&r&6 You have lost connection to the server"
   RemoveUnicodeBooks: false
+
+
 #These are the connection messages for when a player joins / leaves
 #Use & for colours and %player% as a placeholder for the players name
 Connection:
-  Player-Join-Message: "&7%player% &7joined"
-  Player-Leave-Message: "&7%player% &7left"
+  Player-Join-Message: ""
+  Player-Leave-Message: ""
+
+
 #Max amount of any entity listed here per chunk
 #The formatting for this is <entity>:<amount> (i.e pig:20)
 #A list of all valid entities can be found here https://helpch.at/docs/1.12.2/org/bukkit/entity/EntityType.html
@@ -159,5 +199,7 @@ EntityAmounts:
     - "falling_block:50"
     - "primed_tnt:5"
     - "dropped_item:50"
+
+      
 #Deop opped players when they leave
 DeopOnLeave: true

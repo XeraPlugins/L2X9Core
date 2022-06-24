@@ -35,8 +35,8 @@ public class Offhand implements Listener {
 					player.kickPlayer("&cPacket Exploit Detected");
 				}
 			}
-		} catch (Error | Exception throwable) {
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
