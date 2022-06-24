@@ -6,6 +6,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -58,7 +59,7 @@ public class Main extends JavaPlugin {
 		getLogger().info("by Nate Legault enabled");
 		pluginManager.registerEvents(new BlockPlace(this), this);
 		pluginManager.registerEvents(new Offhand(this), this);
-			pluginManager.registerEvents(new GateWay(), this);
+		pluginManager.registerEvents(new GateWay(), this);
 		try {
 			commandHandler.registerCommands();
 		} catch (NotInPluginYMLException e) {
@@ -78,7 +79,7 @@ public class Main extends JavaPlugin {
 		pluginManager.registerEvents(new BucketEvent(this), this);
 		pluginManager.registerEvents(new MinecartLag(this), this);
 		//pluginManager.registerEvents(new PlayerChat(this), this);
-		pluginManager.registerEvents(new ChestLagFix(this), this);
+		//pluginManager.registerEvents(new ChestLagFix(this), this);
 		pluginManager.registerEvents(new dispensor(this), this);
 		pluginManager.registerEvents(new PacketElytraFly(this), this);
 		//pluginManager.registerEvents(connectionMessages, this);

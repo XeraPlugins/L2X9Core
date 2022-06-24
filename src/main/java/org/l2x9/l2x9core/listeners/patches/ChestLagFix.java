@@ -1,5 +1,6 @@
 package org.l2x9.l2x9core.listeners.patches;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.Player;
@@ -11,6 +12,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.BookMeta;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.l2x9.l2x9core.Main;
 import org.l2x9.l2x9core.util.SecondPassEvent;
 import org.l2x9.l2x9core.util.Utils;
@@ -20,11 +23,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ChestLagFix implements Listener {
-    HashMap<Player, Integer> chestHashMap = new HashMap<>();
+    public HashMap<Player, Integer> chestHashMap = new HashMap<>();
     Main plugin;
 
     public ChestLagFix(Main plugin) {
         this.plugin = plugin;
+
     }
 
     @EventHandler
@@ -45,13 +49,19 @@ public class ChestLagFix implements Listener {
                     deleteNBTBooks(event.getInventory());
                 }
                 if (chestHashMap.get(player) > maxSpam) {
-                    chestHashMap.clear();
                     Utils.kickPlayer(player, kickMessage);
+                    chestHashMap.remove(player);
                 }
             }
-        } catch (Error | Exception throwable) {
-            chestHashMap.clear();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+        scheduler.runTaskTimer((Plugin) this, () -> {
+            if (Utils.getTps() <= 15) {
+                chestHashMap.clear();
+            }
+        }, 20L * 1L /*<-- the initial delay */, 20L * 30L /*<-- the interval */);
     }
 
     @EventHandler

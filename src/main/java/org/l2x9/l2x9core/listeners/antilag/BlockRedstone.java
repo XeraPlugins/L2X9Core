@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.l2x9.l2x9core.Main;
@@ -58,6 +60,64 @@ public class BlockRedstone implements Listener {
         }
     }
 
+    @EventHandler
+    public void PistonExtendEvent(BlockPistonExtendEvent event) {
+        try {
+            if (Utils.getTps() <= plugin.getConfig().getInt("Redstone.Disable-TPS")
+                    && !(event.getBlock().getType() == Material.TRAPPED_CHEST)) {
+                Block block = event.getBlock();
+                String fagMachine = "Deleted a taco machine at " + block.getLocation().getBlockX() + " "
+                        + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + " in world "
+                        + block.getLocation().getWorld().getName() + "";
+                event.getBlock().setType(Material.AIR);
+                sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed a lag machine at &r&1" + block.getLocation().getBlockX() + " " + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + "&r&6 owned by &r&1 " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), "&aClick to telepot to the player", "/tp " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), ClickEvent.Action.RUN_COMMAND);
+                //event.getBlock().getLocation().getWorld().strikeLightning(block.getLocation());
+                System.out.println(ChatColor.translateAlternateColorCodes('&', "&a" + fagMachine));
+                boolean alreadySent = false;
+                for (Entity entity : block.getChunk().getEntities()) {
+                    if (!(entity instanceof Player)) {
+                        entity.remove();
+                        if (!alreadySent) {
+                            System.out.println(ChatColor.GREEN + "Removed " + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + " from a laggy chunk");
+                            Utils.sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed &r&1" + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + "&r&6 from a laggy chunk");
+                            alreadySent = true;
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @EventHandler
+    public void PistonRetractEvent(BlockPistonRetractEvent event) {
+        try {
+            if (Utils.getTps() <= plugin.getConfig().getInt("Redstone.Disable-TPS")
+                    && !(event.getBlock().getType() == Material.TRAPPED_CHEST)) {
+                Block block = event.getBlock();
+                String fagMachine = "Deleted a taco machine at " + block.getLocation().getBlockX() + " "
+                        + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + " in world "
+                        + block.getLocation().getWorld().getName() + "";
+                event.getBlock().setType(Material.AIR);
+                sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed a lag machine at &r&1" + block.getLocation().getBlockX() + " " + block.getLocation().getBlockY() + " " + block.getLocation().getBlockZ() + "&r&6 owned by &r&1 " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), "&aClick to telepot to the player", "/tp " + Utils.getNearbyPlayer(50, block.getLocation()).getName(), ClickEvent.Action.RUN_COMMAND);
+                //event.getBlock().getLocation().getWorld().strikeLightning(block.getLocation());
+                System.out.println(ChatColor.translateAlternateColorCodes('&', "&a" + fagMachine));
+                boolean alreadySent = false;
+                for (Entity entity : block.getChunk().getEntities()) {
+                    if (!(entity instanceof Player)) {
+                        entity.remove();
+                        if (!alreadySent) {
+                            System.out.println(ChatColor.GREEN + "Removed " + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + " from a laggy chunk");
+                            Utils.sendOpMessage("&6&l[&b&lLEF&6&l] &6Removed &r&1" + block.getChunk().getEntities().length + " " + entity.getType().toString().toLowerCase().concat("s") + "&r&6 from a laggy chunk");
+                            alreadySent = true;
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @EventHandler
     public void onPull(PlayerInteractEvent event) {
         try {
