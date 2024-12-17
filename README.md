@@ -1,6 +1,14 @@
+# LeeesExploitFixer
 LeeesExploitFixer is a simple minecraft server exploit fixer for paper 1.12.2 
 Latest: 3.1.4 (Paper 1.12.2 ONLY)
-join our discord: https://discord.gg/H5RDy36apA <-- (NVM PistonMaster Nuked it)
+
+
+# NOTICE: THIS PLUGIN HAS BEEN DISCONTINUED!
+
+## This plugin has been discontinued and will no longer receive updates. This is legacy software and will not be supported!
+## Development of this plugin has been moved to [8b8tCore](https://github.com/XeraPlugins/8b8tCore) which is an Anarchy Core plugin for Folia servers running on 1.21.
+
+
 ___
 
 ## Features
